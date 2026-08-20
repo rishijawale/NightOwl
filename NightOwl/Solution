@@ -1,0 +1,51 @@
+Existing Solution and Our Solution
+
+Existing / Naive Approaches — and Their Gaps
+
+1. Manual foot/vehicle patrolling by forest staff
+
+Relies entirely on Forest Circle → Division → Range → Round → Beat guard presence
+Cannot continuously cover large, dense, remote terrain — especially at night
+Poaching is typically discovered after it happens, not in real time
+
+2. "Heat = human" thermal-only detection
+
+Simple thermal cameras flag any heat signature as a threat
+Can't distinguish a person from wildlife (deer, boar, elephant, monkey also emit heat)
+No confidence scoring or "uncertain" category — forces every detection into a binary
+
+3. Claims of thermal cameras "seeing through trees"
+
+Some existing pitches oversell thermal capability
+In reality, dense vegetation blocks thermal line-of-sight — this is a hard physical limitation, not solved by "better hardware"
+
+4. Muzzle-flash-based gunfire detection
+
+Depends on catching a very brief visual flash
+Easily missed or blocked by vegetation/distance
+
+5. Blanket facial recognition for identifying people in the sanctuary
+
+Attempts to ID every individual detected
+Raises privacy concerns and is impractical at scale/low visibility
+
+6. "One drone covers the whole sanctuary" assumption
+
+Unrealistic — ignores battery limits, sensor FOV, and detection-probability dropoff
+Leads to false confidence in coverage claims
+
+7. Alert-on-every-detection
+
+No scoring/filtering — floods control room with false positives (an animal, an authorized guard, etc. all trigger the same alert)
+What Our Solution Adds
+Gap in existing approach	What we add
+Single sensor (thermal only)	Sensor fusion: thermal + RGB + acoustic + GPS (+ optional LiDAR) working together
+Heat = human assumption	AI classification using shape, posture, movement, multi-frame tracking, plus an explicit "Unknown" class instead of forcing a guess
+"Sees through trees" overclaim	Multi-angle observation: drone repositions and combines multiple views + acoustic cross-check to handle occlusion — with the limitation openly acknowledged
+Muzzle-flash-dependent gunfire detection	Acoustic gunshot detection that works even when the shooter is visually blocked, with nearest-drone dispatch for visual confirmation
+Blanket facial recognition	Authorized-patrol cross-checking — compares detections against scheduled patrol data instead of trying to identify every individual (more practical and privacy-conscious)
+"One drone, whole sanctuary"	Distributed network: Range-level drone bases + patrol sectors + forward/mobile battery stations + tethered UAVs for persistent watch over specific high-risk zones
+Alert-everything	Threat-scoring engine (GREEN/YELLOW/RED) that weighs time, zone risk, movement, gunshot correlation, and patrol status before alerting — cutting false positives
+Replaces human patrols	Explicitly designed to augment forest guards, integrating with the existing Circle → Division → Range → Round → Beat structure rather than working around it
+
+The core shift: existing approaches treat detection as a single-sensor, single-drone, binary-classification problem. Our solution treats it as a layered, fused, probabilistic system — multiple sensors, multiple viewing angles, contextual scoring, and human verification built in from the start.
