@@ -1,0 +1,45 @@
+Feasibility — Quick Summary
+
+Technically Feasible
+
+Multirotor + RGB + thermal + GPS (standard, proven hardware)
+Pixhawk/ArduPilot or PX4 (mature autopilot stack)
+Basic human/animal/unknown AI classification (YOLO-class model on Jetson/Pi)
+GPS-tagged alert dashboard
+
+Needs Real Testing
+
+Acoustic gunshot detection (~57% accuracy in cited research — not reliable alone)
+Multi-angle occlusion handling (works in theory, unproven in field)
+Threat-scoring tuning (needs real data to avoid false alerts)
+
+Not Feasible at Prototype Stage
+
+Full sanctuary-wide coverage
+Range-level multi-drone fleet
+Battery-swapping infrastructure
+Solar forward stations
+
+Operationally
+
+✅ Integrates with existing Forest Dept hierarchy (Circle→Division→Range→Round→Beat)
+✅ Positioned as augmenting guards, not replacing them
+⚠️ Needs ongoing maintenance, training, battery logistics
+⚠️ Remote-area connectivity is unreliable — needs local processing
+
+Cost
+
+✅ Single prototype drone: affordable for student/SIH build
+❌ Multi-Range deployment + infrastructure: needs government-scale funding
+
+Regulatory
+
+⚠️ Needs DGCA drone clearance
+⚠️ Border-adjacent sanctuaries (e.g., Kachchh/BSF zone) need extra security clearance
+✅ Avoiding facial recognition = more privacy-feasible
+
+Timeline (SIH-realistic)
+
+Phase 1–2 (detection + acoustic + fusion): buildable and demoable
+Phase 3 (threat scoring + patrol check): feasible with simulated data
+Phase 4 (full dashboard + tethered UAV + fleet): simulate, don't build
