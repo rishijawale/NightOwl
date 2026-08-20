@@ -1,0 +1,39 @@
+HARDWARE 
+
+Hardware Components — Wildlife Anti-Poaching Drone System
+1. Airframe
+Primary platform: Small multirotor (recommended for MVP/Phase 1)
+Secondary concept: Fixed-wing + multirotor hybrid fleet — fixed-wing for efficient large-area reconnaissance, multirotor for hover/inspect/detailed observation (noted as more complex due to differing launch/recovery needs)
+Persistent-surveillance variant: Tethered UAV for selected high-risk zones (continuous power/data via tether; not suited for roaming patrol)
+
+2. Sensing Payload
+Sensor	Function
+Thermal camera	Detects exposed human/animal heat signatures; effective at night/low light; cannot see through dense vegetation
+RGB camera	Daytime visual confirmation, classification, evidence capture
+Acoustic sensor array	Gunshot-impulse detection; multiple units enable source localization
+LiDAR / depth camera	Optional; terrain/vegetation mapping and obstacle avoidance (not for seeing through foliage)
+GNSS/GPS	Positioning and GPS-tagged detections/alerts
+
+3. Flight & Navigation Electronics
+Flight controller: Pixhawk-class
+Firmware/autopilot: ArduPilot or PX4
+Additional nav sensors: IMU (orientation/motion), barometer (altitude), obstacle sensors (local avoidance)
+Companion computer: Raspberry Pi- or Jetson-class board (for onboard AI inference/processing)
+
+4. Power System
+Battery chemistry: LiPo (favored for power-to-weight ratio in multirotor prototypes)
+Endurance target (illustrative, not guaranteed): ~25–35 min per sortie; example planning model: 30 min nominal − 8 min reserve = 22 min usable patrol time
+Energy infrastructure:
+Forward battery stations (solar panel → stationary battery bank → drone charging/swap)
+Mobile drone base (vehicle-transported drones, batteries, charging gear)
+Solar-powered ground station (preferred over onboard solar panels)
+Tethered ground dock (continuous power/data delivery via cable)
+
+5. Ground/Control Infrastructure
+Central Wildlife Control Room
+Range-level/strategic drone bases (example: 2 drones per Range)
+Dashboard system displaying live drone position, map, detections, alerts, patrol sectors
+
+Notes/Caveats stated in the source
+No hardware spec is treated as final — battery life, coverage area, and detection range are called "illustrative planning calculations," not guaranteed specifications.
+Actual coverage depends on real specs of the selected drone (flight time, speed, camera FOV, altitude, target size, vegetation, weather).
